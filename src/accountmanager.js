@@ -16,31 +16,32 @@ function Accountmanager() {
   useEffect(() => {
     dispatch(fetchTransactionData())
     setIsInserted(false)
+    setModalShow(false)
   },[isInserted]);
 
   useEffect(() => {
     if (data.length) {
       setTotalBalance(data[0].totalbalance);
     }
-  });
+  },[data]);
 
   return (
     <div className="background">
       <Navbar />
-      <Container fluid='lg' style={{ backgroundColor: '#c5c6c7', paddingTop: '12px',paddingBottom:'5px', borderRadius: '10px', marginTop: '30px' }}>
+      <Container fluid='lg' style={{ backgroundColor: '#c5c6c7', paddingTop: '12px',paddingBottom:'5px', borderRadius: '10px', marginTop: '50px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
           <Button variant="primary">
-            Running Balance: {data.length ? <Badge variant="light" style={{ backgroundColor: '#ccffcc' }}>{totalBalance}</Badge> : null}
+            Running Balance: {data.length ? <Badge variant="light" style={{ backgroundColor: '#ccffcc' }}>{'₹ '+totalBalance}</Badge> : null}
             <span className="sr-only">unread messages</span>
           </Button>
           <Button variant="primary" onClick={() => setModalShow(true)}>
             <Badge variant="light">+</Badge> Add Transaction
         </Button>
           <Addtransaction
-            totalBalance={totalBalance}
+            totalbalance={totalBalance}
             show={modalShow}
             inserted={isInserted}
-            isDataInserted={() => setIsInserted(true)}
+            isdatainserted={() => setIsInserted(true)}
             onHide={() => setModalShow(false)}
           />
         </div>

@@ -1,6 +1,6 @@
 import {FETCHED_TRANSACTION_DATA} from './types';
 import axios from 'axios';
-const apiUrl = 'http://localhost:8000';
+import apiUrl from '../config/config';
 
 
 export const fetchTransactionData = () => {

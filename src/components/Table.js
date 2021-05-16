@@ -16,6 +16,7 @@ function Table_home(props) {
             <tbody>
                 {props.data.map((data,index) => (
                     <tr key={index}>
+                        <td key={index}>{index+1}</td>
                         {Object.values(data).map((val,index) => (
                             <td key={index}>{val}</td>
                         ))}
