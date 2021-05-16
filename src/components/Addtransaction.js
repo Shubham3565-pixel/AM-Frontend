@@ -40,7 +40,7 @@ function Addtransaction(props) {
                 <p>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Transaction Type</Form.Label>
-                        <Form.Control as="select" name='type' value={transactionType} onChange={e => setTransactionType(e.target.value)}>
+                        <Form.Control as="select" name='type' value={transactionType} defaultValue={transactionType} onChange={e => setTransactionType(e.target.value)}>
                             {options.map((option) => (
                                 <option value={option.value} key={option.key}>{option.label}</option>
                             ))}
@@ -66,7 +66,9 @@ function Addtransaction(props) {
             <Modal.Footer>
                 <Button variant="primary" onClick={transactionType && transactionAmount && transactionDescription ? e => { 
                     if(props.totalBalance==0 && transactionType=="debit"){
-                        alert("First transaction should be a Credit Type.!!")
+                        if(transactionAmount>props.totalBalance){
+                            alert("Amount can not be debited.!! ")    
+                        }
                     }
                     else{
                     handleSubmit(e)
