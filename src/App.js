@@ -4,7 +4,7 @@ import Accountmanager from './accountmanager';
 
 function App(props) {
   return (
-    <Accountmanager />
+    <Accountmanager props={props.logapp}/>
   );
 }
 

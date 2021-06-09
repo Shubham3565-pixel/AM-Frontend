@@ -1,31 +1,30 @@
 import { Button, Modal, InputGroup, Form, FormControl } from 'react-bootstrap';
 import React from 'react';
 import { useState } from 'react';
-import Senddata from './Senddata';
-
+import sendData from './sendData';
+const options = [
+    {
+        key: 1,
+        label: "Choose Transaction Type",
+        value: "-",
+    },
+    {
+        key: 2,
+        label: "Debit",
+        value: "debit",
+    },
+    {
+        key: 3,
+        label: "Credit",
+        value: "credit",
+    }];
 
 function Addtransaction(props) {
-    const options = [
-        {
-            key: 1,
-            label: "Choose Transaction Type",
-            value: "-",
-        },
-        {
-            key: 2,
-            label: "Debit",
-            value: "debit",
-        },
-        {
-            key: 3,
-            label: "Credit",
-            value: "credit",
-        }];
-    const [transactionType, setTransactionType] = useState();
-    const [transactionAmount, setTransactionAmount] = useState();
-    const [transactionDescription, setTransactionDescription] = useState();
+    const [transactionType, setTransactionType] = useState("credit");
+    const [transactionAmount, setTransactionAmount] = useState(0);
+    const [transactionDescription, setTransactionDescription] = useState("");
     const handleSubmit = (e) => {
-        Senddata({ transactionType, transactionAmount, transactionDescription });
+        sendData({ transactionType, transactionAmount, transactionDescription });
         e.preventDefault();
     }
     return (

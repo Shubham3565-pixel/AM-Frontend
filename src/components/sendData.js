@@ -2,7 +2,7 @@ import axios from 'axios';
 import apiUrl from '../config/config';
 
 
-async function Senddata(transaction) {
+async function sendData(transaction) {
     axios.post(apiUrl+'/senddata', transaction)
         .then(response => {
             console.log(response);
@@ -12,4 +12,4 @@ async function Senddata(transaction) {
         });
   }
 
-  export default Senddata;
+  export default sendData;
